@@ -19,6 +19,15 @@ body {
 }
 
 /* Screen Management */
+#app {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .screen {
   position: absolute;
   top: 0;
@@ -38,7 +47,6 @@ body {
   visibility: visible;
 }
 
-/* Upload Screen */
 .upload-container {
   text-align: center;
   max-width: 600px;
