@@ -26,7 +26,10 @@ export function calculateStepsStats(data: WeeklyStepsData[]): StepsStats {
   });
 
   // Group by month
-  const monthOrder = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  const monthOrder = [
+    'January', 'February', 'March', 'April', 'May', 'June',
+    'July', 'August', 'September', 'October', 'November', 'December'
+  ];
   const monthlyMap = new Map<string, { steps: number; weeks: number }>();
 
   data.forEach(d => {

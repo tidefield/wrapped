@@ -14,6 +14,7 @@ Open http://localhost:5173/ in your browser.
 ## Current Status
 
 The UI is fully functional with mock data. Navigate through slides using:
+
 - Arrow buttons
 - Keyboard arrows (← →)
 - Progress dots
@@ -43,13 +44,13 @@ The app expects a `WrappedStats` object (see `src/types.ts`):
 interface WrappedStats {
   year: number;
   totalActivities: number;
-  totalDistance: number;        // in meters
-  totalDuration: number;         // in seconds
+  totalDistance: number; // in meters
+  totalDuration: number; // in seconds
   totalCalories: number;
-  totalElevationGain: number;    // in meters
+  totalElevationGain: number; // in meters
   activeDays: number;
-  longestDistance: number;       // in meters
-  longestDuration: number;       // in seconds
+  longestDistance: number; // in meters
+  longestDuration: number; // in seconds
   avgHeartRate: number;
   maxHeartRate: number;
   favoriteActivity: string;
@@ -67,6 +68,7 @@ interface WrappedStats {
 ## Styling
 
 All styles are in `styles/main.css`. Key things you can customize:
+
 - **Colors**: Change the gradient in `body { background: ... }`
 - **Fonts**: Update the font-family
 - **Animations**: Adjust transitions and keyframes

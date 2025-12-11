@@ -23,6 +23,12 @@ export function calculateAllActivitiesStats(data: MonthlyActivityData[]): AllAct
 
   // Calculate stats for each activity type
   const activitiesByType: ActivityTypeStats[] = [];
+  const monthAbbreviations: { [key: string]: string } = {
+    'Jan': 'January', 'Feb': 'February', 'Mar': 'March', 'Apr': 'April',
+    'May': 'May', 'Jun': 'June', 'Jul': 'July', 'Aug': 'August',
+    'Sep': 'September', 'Oct': 'October', 'Nov': 'November', 'Dec': 'December'
+  };
+
   activityTypeMap.forEach((activities, type) => {
     const typeDistance = activities.reduce((sum, a) => sum + a.distance, 0);
     const uniqueMonths = new Set(activities.map(a => a.month)).size;
@@ -30,10 +36,20 @@ export function calculateAllActivitiesStats(data: MonthlyActivityData[]): AllAct
     // Find best month for this activity
     const monthlyTotals = new Map<string, number>();
     activities.forEach(a => {
-      monthlyTotals.set(a.month, (monthlyTotals.get(a.month) || 0) + a.distance);
+      // Convert abbreviated month to full name
+      const monthMatch = a.month.match(/^(\w{3})/);
+      const monthName = monthMatch ? monthMatch[1] : '';
+      const fullMonthName = monthAbbreviations[monthName] || a.month;
+
+      monthlyTotals.set(fullMonthName, (monthlyTotals.get(fullMonthName) || 0) + a.distance);
     });
 
-    let bestMonth = { month: activities[0].month, distance: 0 };
+    // Initialize bestMonth with the first activity's month (converted to full name)
+    const firstActivityMonthMatch = activities[0].month.match(/^(\w{3})/);
+    const firstActivityMonthName = firstActivityMonthMatch ? firstActivityMonthMatch[1] : '';
+    const firstActivityFullMonth = monthAbbreviations[firstActivityMonthName] || activities[0].month;
+    let bestMonth = { month: firstActivityFullMonth, distance: 0 };
+
     monthlyTotals.forEach((dist, month) => {
       if (dist > bestMonth.distance) {
         bestMonth = { month, distance: dist };
@@ -57,18 +73,31 @@ export function calculateAllActivitiesStats(data: MonthlyActivityData[]): AllAct
   const topActivity = activitiesByType[0]?.type || 'Unknown';
 
   // Monthly breakdown with all activities
-  const monthOrder = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  const monthOrder = [
+    'January', 'February', 'March', 'April', 'May', 'June',
+    'July', 'August', 'September', 'October', 'November', 'December'
+  ];
   const monthlyMap = new Map<string, { distance: number; activities: Set<string> }>();
 
   data.forEach(d => {
-    const monthMatch = d.month.match(/^(\w{3})/);
+    // Extract full month name - handle both abbreviated and full month names
+    const monthMatch = d.month.match(/^(\w{3,9})/);
     const monthName = monthMatch ? monthMatch[1] : '';
 
-    if (monthName) {
-      if (!monthlyMap.has(monthName)) {
-        monthlyMap.set(monthName, { distance: 0, activities: new Set() });
+    // Convert abbreviated month to full name
+    const monthAbbreviations: { [key: string]: string } = {
+      'Jan': 'January', 'Feb': 'February', 'Mar': 'March', 'Apr': 'April',
+      'May': 'May', 'Jun': 'June', 'Jul': 'July', 'Aug': 'August',
+      'Sep': 'September', 'Oct': 'October', 'Nov': 'November', 'Dec': 'December'
+    };
+
+    const fullMonthName = monthAbbreviations[monthName] || monthName;
+
+    if (fullMonthName) {
+      if (!monthlyMap.has(fullMonthName)) {
+        monthlyMap.set(fullMonthName, { distance: 0, activities: new Set() });
       }
-      const current = monthlyMap.get(monthName)!;
+      const current = monthlyMap.get(fullMonthName)!;
       current.distance += d.distance;
       current.activities.add(d.activityType);
     }
