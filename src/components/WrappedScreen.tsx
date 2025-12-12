@@ -170,10 +170,12 @@ const WrappedScreen: React.FC<WrappedScreenProps> = ({
 
   if (totalSlides === 0) {
     return (
-      <div style={{ color: "white", padding: "2rem", background: "red" }}>
-        <h2>No data available</h2>
-        <p>Activities: {activitiesStats ? "Yes" : "No"}</p>
-        <p>Steps: {stepsStats ? "Yes" : "No"}</p>
+      <div style={{ padding: "2rem" }}>
+        <h3>
+          Uh oh. Either your data is broken or I can't handle your data yet.
+        </h3>
+        <br />
+        <h3>Please leave a feedback.</h3>
       </div>
     );
   }

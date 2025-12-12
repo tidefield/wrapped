@@ -71,26 +71,38 @@ const UploadScreen: React.FC<UploadScreenProps> = ({
         </p>
         <ol>
           <li>
-            <strong>Activity Distance:</strong>{" "}
+            <strong>Option 1:</strong> Complete export with all activities:{" "}
+            <a
+              href="https://www.garmin.com/en-US/account/datamanagement/exportdata"
+              target="_blank"
+              rel="noopener"
+              style={{ color: "#4d65ff", textDecoration: "underline" }}
+            >
+              Garmin Account Data Management
+            </a>{" "}
+            (download activities.csv)
+          </li>
+          <li>
+            <strong>Option 2:</strong> Individual reports:{" "}
             <a
               href="https://connect.garmin.com/modern/report/17/all/last_year"
               target="_blank"
               rel="noopener"
+              style={{ color: "#4d65ff", textDecoration: "underline" }}
             >
-              Garmin Connect
+              Activity Distance
             </a>{" "}
-          </li>
-          <li>
-            <strong>Steps:</strong>{" "}
+            +{" "}
             <a
               href="https://connect.garmin.com/modern/report/29/wellness/last_year"
               target="_blank"
               rel="noopener"
+              style={{ color: "#4d65ff", textDecoration: "underline" }}
             >
-              Garmin Connect
-            </a>{" "}
+              Steps
+            </a>
           </li>
-          <li>Upload CSV files below (one or both files)</li>
+          <li>Upload CSV files below (activities.csv recommended)</li>
         </ol>
 
         <div style={{ marginTop: "1.5rem", marginBottom: "1rem" }}>

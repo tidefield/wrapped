@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import {
   parseGarminTotalDistanceCSV,
   parseGarminStepsCSV,
+  parseGarminActivitiesCSV,
 } from "./parser/csvParser";
 import { calculateAllActivitiesStats } from "./allActivitiesStats";
 import { calculateStepsStats } from "./stepsStats";
@@ -109,6 +110,9 @@ function AppContent() {
         if (file.name.toLowerCase().includes("steps")) {
           const data = await parseGarminStepsCSV(file, unit);
           allStepsData.push(...data);
+        } else if (file.name.toLowerCase().includes("activities")) {
+          const data = await parseGarminActivitiesCSV(file, unit);
+          allActivityData.push(...data);
         } else {
           const data = await parseGarminTotalDistanceCSV(file, unit);
           allActivityData.push(...data);

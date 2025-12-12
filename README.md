@@ -4,12 +4,13 @@ Your Fitness (Garmin/Strava/StrideSync) (un)Wrappred, free from paywalls
 
 Welcome! I'm making this repo public to be 100% transparent that this app is client-side only and does not collect or store any user data. All data processing happens locally in the browser.
 
-This is in early development. Only the following data sources are supported:
+This is in early development. The following data sources are supported:
 
+- **activities.csv** (recommended) - Complete export from Garmin Account Data Management
 - **Total Distance.csv** from Garmin Connect
 - **Steps.csv** from Garmin Connect
 
-Follow the landing page instructions to learn how to prepare your data.
+The app automatically detects and processes your data. For activities.csv, swimming distances are automatically converted from meters to kilometers.
 
 ## Contributing
 

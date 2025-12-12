@@ -1,5 +1,6 @@
 import type { MonthlyActivityData, WeeklyStepsData } from "../types";
 import { milesToKm } from "../utils";
+export { parseGarminActivitiesCSV } from "./activitiesCsvParser";
 
 /**
  * Parse Garmin steps CSV file
