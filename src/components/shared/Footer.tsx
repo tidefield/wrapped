@@ -22,7 +22,8 @@ const Footer: React.FC = () => {
       <span>
         or{" "}
         <a
-          href="mailto:hi@tidefield.dev"
+          href="https://forms.gle/LQm8MAkahjd5zWvA6"
+          target="_blank"
           style={{
             color: "#4d65ff",
             textDecoration: "underline",

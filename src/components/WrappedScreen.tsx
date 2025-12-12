@@ -12,7 +12,6 @@ import { BestWeekSlide } from "./steps/BestWeekSlide";
 import { StepsBestMonthSlide } from "./steps/StepsBestMonthSlide";
 import ConfettiBackground from "./shared/ConfettiBackground";
 import { useUnit } from "../contexts/UnitContext";
-// import { StepsTimelineSlide } from "./steps/StepsTimelineSlide";
 
 interface WrappedScreenProps {
   activitiesStats: AllActivitiesStats | null;
@@ -109,7 +108,6 @@ const WrappedScreen: React.FC<WrappedScreenProps> = ({
         SlideComponent === StepsAverageSlide ||
         SlideComponent === BestWeekSlide ||
         SlideComponent === StepsBestMonthSlide
-        // SlideComponent === StepsTimelineSlide
       ) {
         return stepsStats !== null;
       }

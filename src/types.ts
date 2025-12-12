@@ -38,29 +38,6 @@ export interface AllActivitiesStats {
   };
 }
 
-export interface WrappedStats {
-  year: number;
-  totalActivities: number;
-  totalDistance: number; // meters
-  totalDuration: number; // seconds
-  totalCalories: number;
-  totalElevationGain: number; // meters
-  activeDays: number;
-  longestDistance: number; // meters
-  longestDuration: number; // seconds
-  avgHeartRate: number;
-  maxHeartRate: number;
-  favoriteActivity: string;
-  activitiesByMonth: { month: string; count: number }[];
-  activitiesByType: ActivityTypeStats[];
-  topStats: {
-    label: string;
-    value: string;
-  }[];
-  hasHeartRateData: boolean;
-  hasElevationData: boolean;
-}
-
 export interface WeeklyStepsData {
   date: string; // MM/DD/YYYY
   steps: number;
