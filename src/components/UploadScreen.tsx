@@ -93,7 +93,7 @@ const UploadScreen: React.FC<UploadScreenProps> = ({
           <li>Upload CSV files below (one or both files)</li>
         </ol>
 
-        {/*<div style={{ marginTop: "1.5rem", marginBottom: "1rem" }}>
+        <div style={{ marginTop: "1.5rem", marginBottom: "1rem" }}>
           <p style={{ marginBottom: "0.5rem" }}>
             <strong>Distance unit in your CSV files:</strong>
           </p>
@@ -135,7 +135,7 @@ const UploadScreen: React.FC<UploadScreenProps> = ({
               Miles (mi)
             </button>
           </div>
-        </div>*/}
+        </div>
 
         <p className="note">
           💡 <strong>Coming soon:</strong> Bulk export from Strava & StrideSync,

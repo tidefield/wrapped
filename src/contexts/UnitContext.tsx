@@ -14,7 +14,11 @@ const UnitContext = createContext<UnitContextType | undefined>(undefined);
 export const UnitProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
-  const [unit, setUnit] = useState<Unit>("km");
+  const [unit, setUnitState] = useState<Unit>("km");
+
+  const setUnit = (newUnit: Unit) => {
+    setUnitState(newUnit);
+  };
 
   const convertDistance = (distanceInKm: number): number => {
     if (unit === "mile") {
