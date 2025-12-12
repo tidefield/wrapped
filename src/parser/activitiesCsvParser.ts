@@ -1,5 +1,6 @@
 import type { MonthlyActivityData } from "../types";
 
+const STRAVA_DISTANCE_COLUMN_NAME = "Distance";
 /**
  * Parse Garmin activities CSV file
  * Expected format: Detailed export with Activity Date, Activity Type, Distance columns
@@ -43,12 +44,17 @@ function parseActivitiesCSV(
   console.log("[Activities Parser] Total lines:", lines.length);
 
   // Log the header row to understand column structure
+  let distanceIdx = 4; // 5th column by default
   if (lines.length > 0) {
     const header = parseCSVLine(lines[0]);
     console.log("[Activities Parser] Header columns:", header);
     header.forEach((col, idx) => {
       console.log(`[Activities Parser] Column ${idx}: "${col}"`);
     });
+
+    distanceIdx = header.findIndex(
+      (col) => col.toLowerCase() == STRAVA_DISTANCE_COLUMN_NAME.toLowerCase(),
+    );
 
     // Check first data row to see all values
     if (lines.length > 1) {
@@ -79,7 +85,7 @@ function parseActivitiesCSV(
 
     const activityDate = values[1]?.trim(); // Activity Date (column 2)
     const activityType = values[3]?.trim(); // Activity Type (column 4)
-    const distanceStr = values[4]?.trim(); // Distance (column 5) - CORRECTED!
+    const distanceStr = values[distanceIdx]?.trim(); // Distance (column 5) - CORRECTED!
 
     console.log(
       `[Activities Parser] Line ${i} - Date: "${activityDate}", Type: "${activityType}", Distance: "${distanceStr}"`,
