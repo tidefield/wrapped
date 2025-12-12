@@ -125,7 +125,7 @@ const UploadScreen: React.FC<UploadScreenProps> = ({
   return (
     <div className="upload-container">
       <ConfettiBackground />
-      <h1>🎁 Fitness (un)Wrapped</h1>
+      <h2>🎁 Fitness (un)Wrapped</h2>
       <p className="subtitle">Your year in fitness, free from paywalls</p>
 
       <div className="instructions">
@@ -148,26 +148,14 @@ const UploadScreen: React.FC<UploadScreenProps> = ({
             the activities.csv file.
           </li>
           <li>
-            <strong>Garmin - Complete:</strong> Account Data Management:{" "}
-            <a
-              href="https://www.garmin.com/en-US/account/datamanagement/exportdata"
-              target="_blank"
-              rel="noopener"
-              style={{ color: "#4d65ff", textDecoration: "underline" }}
-            >
-              Garmin Account Data Management
-            </a>{" "}
-            (download activities.csv)
-          </li>
-          <li>
-            <strong>Garmin - Individual:</strong> Activity Distance + Steps:{" "}
+            <strong>Garmin:</strong>{" "}
             <a
               href="https://connect.garmin.com/modern/report/17/all/last_year"
               target="_blank"
               rel="noopener"
               style={{ color: "#4d65ff", textDecoration: "underline" }}
             >
-              Activity Distance
+              Total Distance.csv
             </a>{" "}
             +{" "}
             <a
@@ -176,13 +164,51 @@ const UploadScreen: React.FC<UploadScreenProps> = ({
               rel="noopener"
               style={{ color: "#4d65ff", textDecoration: "underline" }}
             >
-              Steps
+              Steps.csv
             </a>
           </li>
           <li>Upload CSV files below (activities.csv recommended)</li>
         </ol>
 
-        <div style={{ marginTop: "1.5rem", marginBottom: "1rem" }}>
+        <div style={{ marginTop: "0.5rem" }}>
+          <p style={{ marginBottom: "0.5rem", fontSize: "0.9rem" }}>
+            <strong>Or fetch from StrideSync sheet:</strong>
+          </p>
+          <input
+            type="text"
+            value={googleSheetsUrl}
+            onChange={(e) => setGoogleSheetsUrl(e.target.value)}
+            placeholder="Paste Google Sheets URL here"
+            style={{
+              width: "100%",
+              maxWidth: "500px",
+              padding: "10px",
+              borderRadius: "8px",
+              border: "2px solid rgba(0, 0, 0, 0.3)",
+              fontSize: "14px",
+              marginBottom: "0.75rem",
+            }}
+          />
+          <button
+            onClick={handleFetchFromGoogleSheets}
+            style={{
+              padding: "10px 24px",
+              borderRadius: "8px",
+              border: "2px solid #4d65ff",
+              background: "#4d65ff",
+              color: "white",
+              cursor: "pointer",
+              fontWeight: 600,
+              fontSize: "16px",
+              width: "100%",
+              maxWidth: "500px",
+            }}
+          >
+            Fetch Data from Google Sheets
+          </button>
+        </div>
+
+        <div style={{ marginTop: "0.5rem", marginBottom: "1rem" }}>
           <p style={{ marginBottom: "0.5rem" }}>
             <strong>Distance unit in your CSV files:</strong>
           </p>
@@ -227,47 +253,9 @@ const UploadScreen: React.FC<UploadScreenProps> = ({
         </div>
 
         <p className="note">
-          💡 <strong>Coming soon:</strong> Bulk export from Strava & StrideSync,
-          plus heart rate, sleep data, and sport-personalized cards!
+          💡 <strong>Coming soon:</strong> Bulk export from Garmin, plus heart
+          rate, sleep data, and sport-personalized cards!
         </p>
-
-        <div style={{ marginTop: "1.5rem" }}>
-          <p style={{ marginBottom: "0.5rem", fontSize: "0.9rem" }}>
-            <strong>Or fetch from StrideSync sheet:</strong>
-          </p>
-          <input
-            type="text"
-            value={googleSheetsUrl}
-            onChange={(e) => setGoogleSheetsUrl(e.target.value)}
-            placeholder="Paste Google Sheets URL here"
-            style={{
-              width: "100%",
-              maxWidth: "500px",
-              padding: "10px",
-              borderRadius: "8px",
-              border: "2px solid rgba(0, 0, 0, 0.3)",
-              fontSize: "14px",
-              marginBottom: "0.75rem",
-            }}
-          />
-          <button
-            onClick={handleFetchFromGoogleSheets}
-            style={{
-              padding: "10px 24px",
-              borderRadius: "8px",
-              border: "2px solid #4d65ff",
-              background: "#4d65ff",
-              color: "white",
-              cursor: "pointer",
-              fontWeight: 600,
-              fontSize: "16px",
-              width: "100%",
-              maxWidth: "500px",
-            }}
-          >
-            Fetch Data from Google Sheets
-          </button>
-        </div>
       </div>
 
       <div
