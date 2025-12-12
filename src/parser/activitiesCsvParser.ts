@@ -49,6 +49,15 @@ function parseActivitiesCSV(
     header.forEach((col, idx) => {
       console.log(`[Activities Parser] Column ${idx}: "${col}"`);
     });
+
+    // Check first data row to see all values
+    if (lines.length > 1) {
+      const firstDataRow = parseCSVLine(lines[1]);
+      console.log("[Activities Parser] First data row values:");
+      firstDataRow.forEach((val, idx) => {
+        console.log(`[Activities Parser] Column ${idx}: "${val}"`);
+      });
+    }
   }
 
   const activityMap = new Map<string, number>(); // key: `${month}|${activityType}`, value: distance

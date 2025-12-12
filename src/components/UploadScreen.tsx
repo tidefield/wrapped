@@ -233,7 +233,7 @@ const UploadScreen: React.FC<UploadScreenProps> = ({
 
         <div style={{ marginTop: "1.5rem" }}>
           <p style={{ marginBottom: "0.5rem", fontSize: "0.9rem" }}>
-            <strong>Or fetch from Google Sheets:</strong>
+            <strong>Or fetch from StrideSync sheet:</strong>
           </p>
           <input
             type="text"
@@ -265,7 +265,7 @@ const UploadScreen: React.FC<UploadScreenProps> = ({
               maxWidth: "500px",
             }}
           >
-            Fetch Data from Google Sheets
+            Fetch and parse
           </button>
         </div>
       </div>
