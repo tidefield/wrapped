@@ -13,6 +13,12 @@ import { StepsBestMonthSlide } from "./steps/StepsBestMonthSlide";
 import ConfettiBackground from "./shared/ConfettiBackground";
 import { useUnit } from "../contexts/UnitContext";
 import { useParams, useNavigate } from "react-router";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import { faAngleRight } from "@fortawesome/free-solid-svg-icons/faAngleRight";
+import { faArrowRotateRight } from "@fortawesome/free-solid-svg-icons/faArrowRotateRight";
+import { faAngleLeft } from "@fortawesome/free-solid-svg-icons/faAngleLeft";
+import { faArrowRotateLeft } from "@fortawesome/free-solid-svg-icons/faArrowRotateLeft";
 
 interface WrappedScreenProps {}
 
@@ -220,7 +226,7 @@ const WrappedScreen: React.FC<WrappedScreenProps> = ({}) => {
   }
 
   return (
-    <div>
+    <div className="container">
       <div id="capture-area" className="capture-area">
         <ConfettiBackground />
         <div id="story-container">{renderCurrentSlide()}</div>
@@ -248,12 +254,26 @@ const WrappedScreen: React.FC<WrappedScreenProps> = ({}) => {
         >
           Showing distances in {unit === "mile" ? "miles" : "kilometers"}
         </div>
-        <button className="nav-btn" onClick={prevSlide}>
-          {currentSlideIndex === 0 ? "⟲" : "←"}
+        <button className="nav-btn nav-btn-left" onClick={prevSlide}>
+          {currentSlideIndex === 0 ? (
+            <FontAwesomeIcon
+              icon={faArrowRotateLeft}
+              style={{ width: "18px" }}
+            />
+          ) : (
+            <FontAwesomeIcon icon={faAngleLeft} />
+          )}
         </button>
         {renderProgressDots()}
-        <button className="nav-btn" onClick={nextSlide}>
-          {currentSlideIndex === totalSlides - 1 ? "⟲" : "→"}
+        <button className="nav-btn nav-btn-right" onClick={nextSlide}>
+          {currentSlideIndex === totalSlides - 1 ? (
+            <FontAwesomeIcon
+              icon={faArrowRotateRight}
+              style={{ width: "18px" }}
+            />
+          ) : (
+            <FontAwesomeIcon icon={faAngleRight} />
+          )}
         </button>
       </div>
     </div>

@@ -14,6 +14,17 @@ body {
     overflow-x: hidden;
 }
 
+.root {
+    height: 100vh;
+}
+
+.container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
 /* Design system styles */
 .btn-tertiary {
     color: #4d65ff;
@@ -309,7 +320,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid rgba(26, 26, 26, 0.3);
+    border: 1px solid rgba(26, 26, 26, 1);
     border-radius: 20px;
     padding: 1.5rem;
     transition: all 0.3s ease;
@@ -519,11 +530,21 @@ body {
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(10px);
-    border: 2px solid rgba(26, 26, 26, 0.3);
+    border: 2px solid rgba(26, 26, 26, 1);
     color: #1a1a1a;
     font-size: 1.5rem;
     cursor: pointer;
     transition: all 0.3s ease;
+}
+
+.nav-btn-right {
+    padding-left: 2px;
+    padding-top: 2px;
+}
+
+.nav-btn-left {
+    padding-left: 2px;
+    padding-top: 2px;
 }
 
 .nav-btn:hover:not(:disabled) {
