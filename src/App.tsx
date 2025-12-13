@@ -11,12 +11,14 @@ import UploadScreen from "./components/UploadScreen";
 import LoadingScreen from "./components/LoadingScreen";
 import WrappedScreen from "./components/WrappedScreen";
 import Footer from "./components/shared/Footer";
+import { BrowserRouter, Routes, Route, useNavigate } from "react-router";
 import { UnitProvider, useUnit } from "./contexts/UnitContext";
 
 type Screen = "upload" | "loading" | "wrapped";
 
 function AppContent() {
   const { setUnit } = useUnit();
+  const navigate = useNavigate();
   const [currentScreen, setCurrentScreen] = useState<Screen>("upload");
   const [activitiesStats, setActivitiesStats] =
     useState<AllActivitiesStats | null>(null);
@@ -24,10 +26,26 @@ function AppContent() {
   const [loadingText, setLoadingText] = useState("Loading sample data...");
   const [sampleFiles, setSampleFiles] = useState<File[]>([]);
 
-  // Load sample data on mount
   useEffect(() => {
-    loadSampleData();
+    try {
+      const activitiesStats = JSON.parse(
+        localStorage.getItem("activitiesStats") || "null",
+      );
+      const stepsStats = JSON.parse(
+        localStorage.getItem("stepsStats") || "null",
+      );
+      setActivitiesStats(activitiesStats);
+      setStepsStats(stepsStats);
+    } catch (error) {
+      console.error("Error loading stats from local storage:", error);
+    }
   }, []);
+
+  useEffect(() => {
+    if (activitiesStats != null || stepsStats != null) {
+      setCurrentScreen("wrapped");
+    }
+  }, [activitiesStats, stepsStats]);
 
   const loadSampleData = async () => {
     try {
@@ -83,7 +101,10 @@ function AppContent() {
       const stepsData = await parseGarminStepsCSV(stepsFile);
 
       setLoadingText("Calculating your stats...");
+      localStorage.setItem("activitiesStats", JSON.stringify(activityData));
       setActivitiesStats(calculateAllActivitiesStats(activityData));
+
+      localStorage.setItem("stepsStats", JSON.stringify(stepsStats));
       setStepsStats(calculateStepsStats(stepsData));
 
       setCurrentScreen("wrapped");
@@ -140,20 +161,24 @@ function AppContent() {
 
       if (allActivityData.length > 0) {
         console.log("[App] Calculating activities stats");
-        setActivitiesStats(calculateAllActivitiesStats(allActivityData));
+        const allActivitiesStats = calculateAllActivitiesStats(allActivityData);
+        localStorage.setItem(
+          "activitiesStats",
+          JSON.stringify(allActivitiesStats),
+        );
+        setActivitiesStats(allActivitiesStats);
       } else {
         console.log("[App] No activity data to calculate stats");
       }
 
       if (allStepsData.length > 0) {
         console.log("[App] Calculating steps stats");
-        setStepsStats(calculateStepsStats(allStepsData));
+        const allStepsStats = calculateStepsStats(allStepsData);
+        localStorage.setItem("stepsStats", JSON.stringify(allStepsStats));
+        setStepsStats(allStepsStats);
       } else {
         console.log("[App] No steps data to calculate stats");
       }
-
-      console.log("[App] Switching to wrapped screen");
-      setCurrentScreen("wrapped");
     } catch (error) {
       console.error("[App] Error processing files:", error);
       console.error(
@@ -177,17 +202,14 @@ function AppContent() {
             onFilesUploaded={handleFilesUploaded}
             sampleFiles={sampleFiles}
             onUseSampleData={processSampleData}
+            loadSampleData={loadSampleData}
           />
         );
       case "loading":
         return <LoadingScreen text={loadingText} />;
       case "wrapped":
-        return (
-          <WrappedScreen
-            activitiesStats={activitiesStats}
-            stepsStats={stepsStats}
-          />
-        );
+        navigate("/wrapped/0");
+        return null;
       default:
         return null;
     }
@@ -206,9 +228,14 @@ function AppContent() {
 
 function App() {
   return (
-    <UnitProvider>
-      <AppContent />
-    </UnitProvider>
+    <BrowserRouter>
+      <UnitProvider>
+        <Routes>
+          <Route path="/" element={<AppContent />} />
+          <Route path="/wrapped/:screenId" element={<WrappedScreen />} />
+        </Routes>
+      </UnitProvider>
+    </BrowserRouter>
   );
 }
 

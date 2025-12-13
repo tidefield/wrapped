@@ -14,6 +14,16 @@ body {
     overflow-x: hidden;
 }
 
+/* Design system styles */
+.btn-tertiary {
+    color: #4d65ff;
+    text-decoration: underline;
+    font-size: 0.85rem;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
 /* Celebration background elements */
 .celebration-bg {
     position: fixed;
@@ -601,4 +611,9 @@ body {
         top: -25px;
         padding: 0.2rem 0.6rem;
     }
+}
+
+.add-sample-section {
+    display: flex;
+    justify-content: right;
 }

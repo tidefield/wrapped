@@ -6,6 +6,7 @@ interface UploadScreenProps {
   onFilesUploaded: (files: File[], unit: Unit) => void;
   sampleFiles?: File[];
   onUseSampleData?: () => void;
+  loadSampleData?: () => void;
 }
 
 const GOOGLE_SHEETS_CSV_URL =
@@ -15,6 +16,7 @@ const UploadScreen: React.FC<UploadScreenProps> = ({
   onFilesUploaded,
   sampleFiles = [],
   onUseSampleData,
+  loadSampleData,
 }) => {
   const [uploadedFiles, setUploadedFiles] = useState<File[]>(sampleFiles);
   const [selectedUnit, setSelectedUnit] = useState<Unit>("km");
@@ -276,6 +278,12 @@ const UploadScreen: React.FC<UploadScreenProps> = ({
           hidden
           onChange={handleFileChange}
         />
+      </div>
+      <div className="add-sample-section">
+        {/*TODO: Hide this on loading sample data*/}
+        <button className="btn-tertiary" onClick={loadSampleData}>
+          Try with sample data
+        </button>
       </div>
 
       {uploadedFiles.length > 0 && (
