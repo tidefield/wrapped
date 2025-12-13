@@ -27,7 +27,6 @@ export const BigStatSlide: React.FC<SlideProps> = ({
         alignItems: "center",
         height: "100%",
         width: "100%",
-        minWidth: "600px",
         paddingTop: "0",
       }}
     >

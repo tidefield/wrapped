@@ -309,7 +309,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 3px dashed rgba(26, 26, 26, 0.3);
+    border: 1px solid rgba(26, 26, 26, 0.3);
     border-radius: 20px;
     padding: 1.5rem;
     transition: all 0.3s ease;
@@ -507,6 +507,7 @@ body {
 
 /* Navigation */
 .navigation {
+    height: 10vh;
     display: flex;
     align-items: center;
     gap: 2rem;
@@ -601,9 +602,11 @@ body {
     }
 
     .capture-area {
-        width: 95%;
+        height: 90vh;
+        width: 100vw;
         max-width: 380px;
         padding: 1rem;
+        border: none;
     }
 
     .capture-area::before {
