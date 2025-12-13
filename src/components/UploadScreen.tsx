@@ -274,7 +274,7 @@ const UploadScreen: React.FC<UploadScreenProps> = ({
           type="file"
           id="file-input"
           multiple
-          accept=".csv"
+          accept=".csv, .zip"
           hidden
           onChange={handleFileChange}
         />
