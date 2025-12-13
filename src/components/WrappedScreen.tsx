@@ -220,7 +220,7 @@ const WrappedScreen: React.FC<WrappedScreenProps> = ({}) => {
   }
 
   return (
-    <div>
+    <div className="container">
       <div id="capture-area" className="capture-area">
         <ConfettiBackground />
         <div id="story-container">{renderCurrentSlide()}</div>

@@ -77,6 +77,13 @@ body {
     justify-content: center;
 }
 
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    height: 100vh;
+}
+
 .screen {
     position: absolute;
     top: 0;

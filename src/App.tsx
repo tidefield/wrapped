@@ -14,6 +14,9 @@ import Footer from "./components/shared/Footer";
 import { BrowserRouter, Routes, Route, useNavigate } from "react-router";
 import { UnitProvider, useUnit } from "./contexts/UnitContext";
 
+import * as zip from "@zip.js/zip.js";
+import { parseGarminActivitiesJSON } from "./parser/activitiesCsvParser";
+
 type Screen = "upload" | "loading" | "wrapped";
 
 function AppContent() {
@@ -137,6 +140,19 @@ function AppContent() {
           console.log("[App] Parsing as Activities CSV");
           const data = await parseGarminActivitiesCSV(file, unit);
           console.log("[App] Activities data parsed:", data.length, "records");
+          allActivityData.push(...data);
+        } else if (file.name.endsWith(".zip")) {
+          const zipReader = new zip.ZipReader(new zip.BlobReader(file));
+          const entries = await zipReader.getEntries();
+          const activitySummariesFileEntry = entries.find((entry) =>
+            entry.filename.endsWith("summarizedActivities.json"),
+          );
+          /* @ts-ignore */
+          const jsonFileBlob = await activitySummariesFileEntry?.getData(
+            new zip.BlobWriter(),
+            {},
+          );
+          const data = await parseGarminActivitiesJSON(jsonFileBlob);
           allActivityData.push(...data);
         } else {
           console.log("[App] Parsing as Total Distance CSV");
