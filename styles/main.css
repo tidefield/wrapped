@@ -340,6 +340,19 @@ body {
     border-radius: 12px;
 }
 
+#share-buttons-container {
+    position: absolute;
+    bottom: 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+}
+#share-buttons-container .btn-tertiary {
+    color: #1a1a1a;
+}
+
 #story-container {
     width: 100%;
     height: 100%;
@@ -634,6 +647,11 @@ body {
         font-size: 0.7rem;
         top: -25px;
         padding: 0.2rem 0.6rem;
+    }
+
+    #share-buttons-container {
+        width: 100vw;
+        bottom: -9.5vh;
     }
 }
 

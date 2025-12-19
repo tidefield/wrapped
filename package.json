@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "devDependencies": {
+    "@types/dom-to-image": "^2.6.7",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^5.1.2",
@@ -21,6 +22,7 @@
     "@fortawesome/free-solid-svg-icons": "^7.1.0",
     "@fortawesome/react-fontawesome": "^3.1.1",
     "@zip.js/zip.js": "^2.8.11",
+    "dom-to-image": "^2.6.0",
     "html2canvas": "^1.4.1",
     "react": "^19.2.1",
     "react-dom": "^19.2.1",
