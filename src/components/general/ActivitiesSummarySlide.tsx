@@ -8,6 +8,7 @@ interface Props {
   activitiesStats: NonNullable<AllActivitiesStats>;
 }
 
+const NUM_OF_ACTIVITIES_TO_DISPLAY = 4;
 export const ActivitiesSummarySlide: React.FC<Props> = ({
   activitiesStats,
 }) => {
@@ -29,27 +30,29 @@ export const ActivitiesSummarySlide: React.FC<Props> = ({
           alignItems: "center",
         }}
       >
-        {activitiesStats!.activitiesByType.map((a, i) => (
-          <div
-            key={i}
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "0.75rem",
-              marginBottom: "0.5rem",
-            }}
-          >
-            <span style={{ fontSize: "1.8rem" }}>
-              {getActivityIcon(a.type)}
-            </span>
-            <span>
-              <strong>
-                {a.type.charAt(0).toUpperCase() + a.type.slice(1)}:
-              </strong>{" "}
-              {formatDistance(a.totalDistance, unit)} {distanceLabel}
-            </span>
-          </div>
-        ))}
+        {activitiesStats!.activitiesByType
+          .slice(0, NUM_OF_ACTIVITIES_TO_DISPLAY)
+          .map((a, i) => (
+            <div
+              key={i}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "0.75rem",
+                marginBottom: "0.5rem",
+              }}
+            >
+              <span style={{ fontSize: "1.8rem" }}>
+                {getActivityIcon(a.type)}
+              </span>
+              <span>
+                <strong>
+                  {a.type.charAt(0).toUpperCase() + a.type.slice(1)}:
+                </strong>{" "}
+                {formatDistance(a.totalDistance, unit)} {distanceLabel}
+              </span>
+            </div>
+          ))}
       </div>
     </BigStatSlide>
   );

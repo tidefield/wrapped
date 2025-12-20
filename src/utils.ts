@@ -2,6 +2,7 @@ export const getActivityIcon = (type: string) => {
   const icons: Record<string, string> = {
     running: "🏃‍➡️",
     run: "🏃‍➡️",
+    indoor_cardio: "🏃‍➡️",
 
     cycling: "🚴",
     cycle: "🚴",
@@ -17,9 +18,15 @@ export const getActivityIcon = (type: string) => {
     hike: "🏔️",
 
     workout: "🏋️‍♂️",
+    strength_training: "🏋️‍♂️",
     "gym & fitness equipment": "🏋️‍♂️",
+    hiit: "🏋️‍♂️",
 
     "racket sports": "🎾",
+    pickleball: "🎾",
+
+    yoga: "🧘",
+    pilates: "🧘",
 
     default: "🏃",
   };
