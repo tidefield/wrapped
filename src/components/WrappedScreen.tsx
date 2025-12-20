@@ -205,7 +205,7 @@ const WrappedScreen: React.FC<WrappedScreenProps> = ({}) => {
         {Array.from({ length: totalSlides }).map((_, index) => (
           <span
             key={index}
-            className={`dot ${index === currentSlideIndex ? "active" : ""}`}
+            className={`progress-dot ${index === currentSlideIndex ? "active" : ""}`}
             onClick={() => navigateToScreen(index)}
           />
         ))}

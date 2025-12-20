@@ -572,7 +572,7 @@ body {
 }
 
 .progress-dot.active {
-    background: #4d65ff;
+    background: #1a1a1a;
     transform: scale(1.3);
 }
 
