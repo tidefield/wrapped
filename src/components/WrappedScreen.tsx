@@ -225,7 +225,7 @@ const WrappedScreen: React.FC<WrappedScreenProps> = ({}) => {
   }
 
   return (
-    <div className="flex flex-col justify-center" style={{ height: "100vh" }}>
+    <div className="flex flex-col justify-center h-screen">
       <div id="capture-area" className="capture-area">
         <ConfettiBackground />
         <div id="story-container">{renderCurrentSlide()}</div>

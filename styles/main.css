@@ -362,7 +362,6 @@ body {
         padding: 1rem;
         border: none;
     }
-<<<<<<< HEAD
 
     .capture-area::before {
         font-size: 0.7rem;
@@ -378,6 +377,4 @@ body {
 .add-sample-section {
     display: flex;
     justify-content: right;
-=======
->>>>>>> 592ca85 (Add tailwind)
 }
