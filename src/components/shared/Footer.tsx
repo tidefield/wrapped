@@ -20,6 +20,7 @@ const Footer: React.FC = () => {
         <a
           href="https://forms.gle/LQm8MAkahjd5zWvA6"
           target="_blank"
+          rel="noopener noreferrer"
           className="text-brand-blue underline font-semibold"
         >
           send a feedback
