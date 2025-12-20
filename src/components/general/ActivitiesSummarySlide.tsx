@@ -18,18 +18,7 @@ export const ActivitiesSummarySlide: React.FC<Props> = ({
   return (
     <BigStatSlide title={`${activitiesStats!.year} in numbers`}>
       {/* Activities with icons */}
-      <div
-        style={{
-          fontSize: "1.4rem",
-          margin: "2rem 0",
-          lineHeight: 2,
-          position: "relative",
-          zIndex: 1,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
+      <div className="text-[1.4rem] my-8 leading-8 relative z-[1] flex flex-col items-center">
         {activitiesStats!.activitiesByType
           .slice(0, NUM_OF_ACTIVITIES_TO_DISPLAY)
           .map((a, i) => (
