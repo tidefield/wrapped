@@ -2,37 +2,29 @@ import React from "react";
 
 const Footer: React.FC = () => {
   return (
-    <div className="privacy-note" style={{ marginTop: "1rem" }}>
+    <div className="p-6">
       <span>
-        💙 Love this?{" "}
+        💙 Love this?&nbsp;
         <a
           href="https://buymeacoffee.com/tidefield"
           target="_blank"
           rel="noopener"
-          style={{
-            color: "#4d65ff",
-            textDecoration: "underline",
-            fontWeight: 600,
-          }}
+          className="text-brand-blue underline font-semibold"
         >
           Buy me a coffee
-        </a>{" "}
-        ☕
+        </a>
+        &nbsp;&nbsp;☕
       </span>
       <span>
-        or{" "}
+        &nbsp;&nbsp;or&nbsp;&nbsp;
         <a
           href="https://forms.gle/LQm8MAkahjd5zWvA6"
           target="_blank"
-          style={{
-            color: "#4d65ff",
-            textDecoration: "underline",
-            fontWeight: 600,
-          }}
+          className="text-brand-blue underline font-semibold"
         >
           send a feedback
-        </a>{" "}
-        ✉️
+        </a>
+        &nbsp;&nbsp;✉️
       </span>
     </div>
   );

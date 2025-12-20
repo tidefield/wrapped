@@ -214,11 +214,8 @@ function AppContent() {
   };
 
   return (
-    <div
-      id="app"
-      style={{ display: "flex", flexDirection: "column", maxHeight: "100vh" }}
-    >
-      <div style={{ display: "flex", height: "100%" }}>{renderScreen()}</div>
+    <div id="app" className="flex flex-col max-h-screen">
+      <div className="flex h-full">{renderScreen()}</div>
       <Footer />
     </div>
   );

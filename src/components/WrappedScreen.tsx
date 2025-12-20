@@ -61,7 +61,7 @@ const WrappedScreen: React.FC<WrappedScreenProps> = ({}) => {
   // Calculate total number of slides
   const totalSlides = React.useMemo(() => {
     let count = 0;
-    if (activitiesStats) {
+    if (activitiesStats?.activitiesByType) {
       // Intro + Total Distance + Top Activity + Top 3 activities + Best Month + Outro
       count += 3 + Math.min(activitiesStats.activitiesByType.length, 3) + 2;
     }
@@ -163,9 +163,7 @@ const WrappedScreen: React.FC<WrappedScreenProps> = ({}) => {
     const CurrentSlideComponent = availableSlides[currentSlideIndex];
 
     if (!CurrentSlideComponent) {
-      return (
-        <div style={{ color: "white", padding: "2rem" }}>No slide found</div>
-      );
+      return <div className="text-white p-8">No slide found</div>;
     }
 
     // Pass props to components that need them
@@ -216,7 +214,7 @@ const WrappedScreen: React.FC<WrappedScreenProps> = ({}) => {
 
   if (totalSlides === 0) {
     return (
-      <div style={{ padding: "2rem" }}>
+      <div className="p-8">
         <h3>
           Uh oh. Either your data is broken or I can't handle your data yet.
         </h3>
@@ -227,33 +225,15 @@ const WrappedScreen: React.FC<WrappedScreenProps> = ({}) => {
   }
 
   return (
-    <div className="container">
+    <div className="flex flex-col justify-center" style={{ height: "100vh" }}>
       <div id="capture-area" className="capture-area">
         <ConfettiBackground />
         <div id="story-container">{renderCurrentSlide()}</div>
         <ShareButton />
       </div>
 
-      <div
-        className="navigation"
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          padding: "20px",
-          position: "relative",
-        }}
-      >
-        <div
-          style={{
-            position: "absolute",
-            top: "20px",
-            right: "20px",
-            fontSize: "0.9rem",
-            color: "rgba(255, 255, 255, 0.6)",
-            fontWeight: 500,
-          }}
-        >
+      <div className="navigation flex justify-center items-center p-5 relative">
+        <div className="absolute top-5 right-5 text-sm text-white/60 font-medium">
           Showing distances in {unit === "mile" ? "miles" : "kilometers"}
         </div>
         <button className="nav-btn nav-btn-left" onClick={prevSlide}>

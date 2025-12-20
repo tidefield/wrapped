@@ -13,9 +13,11 @@ const getActivityTitle = (activityType: string): string => {
 
   const activityMap: Record<string, string> = {
     running: "You ran",
+    run: "You ran",
     walk: "You walked",
     walking: "You walked",
     swimming: "You swam",
+    swim: "You swam",
     cycling: "You cycled",
     bike: "You biked",
     biking: "You biked",
