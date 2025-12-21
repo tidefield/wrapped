@@ -16,7 +16,6 @@ export const BestMonthSlide: React.FC<Props> = ({ activitiesStats }) => {
     <BigStatSlide
       title="Your best month"
       value={activitiesStats.milestones.bestMonth.month}
-      valueStyle={{ fontSize: "4rem" }}
       label={`${formatDistance(activitiesStats.milestones.bestMonth.distance, unit)} ${distanceLabel}`}
       description="You were unstoppable!"
     />

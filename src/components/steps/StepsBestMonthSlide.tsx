@@ -12,7 +12,6 @@ export const StepsBestMonthSlide: React.FC<Props> = ({ stepsStats }) => {
     <BigStatSlide
       title="Your best month"
       value={stepsStats.bestMonth.month}
-      valueStyle={{ fontSize: "4rem" }}
       label={`${bestSteps} steps`}
       description="Incredible consistency!"
     />

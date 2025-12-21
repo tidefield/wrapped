@@ -22,7 +22,7 @@ const UploadScreen: React.FC<UploadScreenProps> = ({
   const [selectedUnit, setSelectedUnit] = useState<Unit>("km");
   const [loadingText, setLoadingText] = useState<string>("");
   const [googleSheetsUrl, setGoogleSheetsUrl] = useState<string>(
-    "https://docs.google.com/spreadsheets/d/10WdTGpIWflQTDdN__cCTWrwCh2OrWq4ZCqXP6rhlszs/edit?gid=663162336#gid=663162336",
+    GOOGLE_SHEETS_CSV_URL,
   );
 
   useEffect(() => {
@@ -134,10 +134,12 @@ const UploadScreen: React.FC<UploadScreenProps> = ({
   };
 
   return (
-    <div className="upload-container">
+    <div className="flex flex-col" style={{ maxWidth: "600px" }}>
       <ConfettiBackground />
-      <h2>🎁 Fitness (un)Wrapped</h2>
-      <p className="subtitle">Your year in fitness, free from paywalls</p>
+      <span className="text-4xl my-4 text-center">🎁 Fitness (un)Wrapped</span>
+      <span className="text-2xl my-4 text-center">
+        Your year in fitness, free from paywalls
+      </span>
 
       <div className="instructions">
         <p>
@@ -151,7 +153,7 @@ const UploadScreen: React.FC<UploadScreenProps> = ({
               href="https://www.strava.com/athlete/delete_your_account"
               target="_blank"
               rel="noopener"
-              style={{ color: "#4d65ff", textDecoration: "underline" }}
+              className="text-brand-blue underline"
             >
               Request Your Archive
             </a>{" "}
@@ -164,7 +166,7 @@ const UploadScreen: React.FC<UploadScreenProps> = ({
               href="https://connect.garmin.com/modern/report/17/all/last_year"
               target="_blank"
               rel="noopener"
-              style={{ color: "#4d65ff", textDecoration: "underline" }}
+              className="text-brand-blue underline"
             >
               Total Distance.csv
             </a>{" "}
@@ -173,7 +175,7 @@ const UploadScreen: React.FC<UploadScreenProps> = ({
               href="https://connect.garmin.com/modern/report/29/wellness/last_year"
               target="_blank"
               rel="noopener"
-              style={{ color: "#4d65ff", textDecoration: "underline" }}
+              className="text-brand-blue underline"
             >
               Steps.csv
             </a>
@@ -181,8 +183,8 @@ const UploadScreen: React.FC<UploadScreenProps> = ({
           <li>Upload CSV files below (activities.csv recommended)</li>
         </ol>
 
-        <div style={{ marginTop: "0.5rem" }}>
-          <p style={{ marginBottom: "0.5rem", fontSize: "0.9rem" }}>
+        <div className="mt-2">
+          <p className="mb-2 text-sm">
             <strong>Or fetch from StrideSync sheet:</strong>
           </p>
           <input
@@ -190,73 +192,38 @@ const UploadScreen: React.FC<UploadScreenProps> = ({
             value={googleSheetsUrl}
             onChange={(e) => setGoogleSheetsUrl(e.target.value)}
             placeholder="Paste Google Sheets URL here"
-            style={{
-              width: "100%",
-              maxWidth: "500px",
-              padding: "10px",
-              borderRadius: "8px",
-              border: "2px solid rgba(0, 0, 0, 0.3)",
-              fontSize: "14px",
-              marginBottom: "0.75rem",
-            }}
+            className="w-full max-w-[500px] p-2.5 rounded-lg border-2 border-black/30 text-sm mb-3"
           />
           <button
             onClick={handleFetchFromGoogleSheets}
-            style={{
-              padding: "10px 24px",
-              borderRadius: "8px",
-              border: "2px solid #4d65ff",
-              background: "#4d65ff",
-              color: "white",
-              cursor: "pointer",
-              fontWeight: 600,
-              fontSize: "16px",
-              width: "100%",
-              maxWidth: "500px",
-            }}
+            className="py-2.5 px-6 rounded-lg border-2 border-brand-blue bg-brand-blue text-white cursor-pointer font-semibold text-base w-full max-w-[500px]"
           >
             Fetch Data from Google Sheets
           </button>
         </div>
 
-        <div style={{ marginTop: "0.5rem", marginBottom: "1rem" }}>
-          <p style={{ marginBottom: "0.5rem" }}>
+        <div className="mt-2 mb-4">
+          <p className="mb-2">
             <strong>Distance unit in your CSV files:</strong>
           </p>
-          <div style={{ display: "flex", gap: "0.75rem" }}>
+          <div className="flex gap-3">
             <button
               onClick={() => setSelectedUnit("km")}
-              style={{
-                padding: "8px 20px",
-                borderRadius: "8px",
-                border:
-                  selectedUnit === "km"
-                    ? "2px solid #4d65ff"
-                    : "2px solid rgba(0, 0, 0, 0.3)",
-                background: selectedUnit === "km" ? "#4d65ff" : "white",
-                color: selectedUnit === "km" ? "white" : "black",
-                cursor: "pointer",
-                fontWeight: 600,
-                fontSize: "16px",
-              }}
+              className={`py-2 px-5 rounded-lg border-2 cursor-pointer font-semibold text-base ${
+                selectedUnit === "km"
+                  ? "border-brand-blue bg-brand-blue text-white"
+                  : "border-black/30 bg-white text-black"
+              }`}
             >
               Kilometers (km)
             </button>
             <button
               onClick={() => setSelectedUnit("mile")}
-              style={{
-                padding: "8px 20px",
-                borderRadius: "8px",
-                border:
-                  selectedUnit === "mile"
-                    ? "2px solid #4d65ff"
-                    : "2px solid rgba(0, 0, 0, 0.3)",
-                background: selectedUnit === "mile" ? "#4d65ff" : "white",
-                color: selectedUnit === "mile" ? "white" : "black",
-                cursor: "pointer",
-                fontWeight: 600,
-                fontSize: "16px",
-              }}
+              className={`py-2 px-5 rounded-lg border-2 cursor-pointer font-semibold text-base ${
+                selectedUnit === "mile"
+                  ? "border-brand-blue bg-brand-blue text-white"
+                  : "border-black/30 bg-white text-black"
+              }`}
             >
               Miles (mi)
             </button>
@@ -288,7 +255,7 @@ const UploadScreen: React.FC<UploadScreenProps> = ({
           onChange={handleFileChange}
         />
       </div>
-      <div className="add-sample-section">
+      <div className="flex justify-center">
         {/*TODO: Hide this on loading sample data*/}
         <button className="btn-tertiary" onClick={loadSampleData}>
           Try with sample data
@@ -300,24 +267,11 @@ const UploadScreen: React.FC<UploadScreenProps> = ({
           {uploadedFiles.map((file, index) => (
             <div
               key={index}
-              className="file-item"
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-              }}
+              className="file-item flex justify-between items-center"
             >
               <span>{file.name}</span>
               {sampleFiles.includes(file) && (
-                <span
-                  style={{
-                    fontSize: "0.75rem",
-                    background: "rgba(255, 255, 255, 0.2)",
-                    padding: "0.25rem 0.5rem",
-                    borderRadius: "4px",
-                    marginLeft: "0.5rem",
-                  }}
-                >
+                <span className="text-xs bg-white/20 py-1 px-2 rounded ml-2">
                   Sample Data
                 </span>
               )}
@@ -331,36 +285,6 @@ const UploadScreen: React.FC<UploadScreenProps> = ({
           Let's see what's inside!
         </button>
       )}
-
-      <div className="privacy-note">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
-          />
-        </svg>
-        <span>Your data never leaves your device</span>
-        <a
-          href="https://github.com/tidefield/unwrapped"
-          target="_blank"
-          rel="noopener"
-          style={{
-            color: "#4d65ff",
-            textDecoration: "underline",
-            fontSize: "0.85rem",
-            opacity: 0.8,
-          }}
-        >
-          View source code
-        </a>
-      </div>
     </div>
   );
 };

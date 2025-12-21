@@ -66,7 +66,6 @@ export const TopActivitySlide: React.FC<Props> = ({ activitiesStats }) => {
     <BigStatSlide
       title="Your top activity"
       value={topActivity.type}
-      valueStyle={{ fontSize: "4rem" }}
       label={`${formatDistance(topActivity.totalDistance, unit)} ${distanceLabel}`}
       description={description}
     />

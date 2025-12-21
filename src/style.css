@@ -1,2 +1,28 @@
-/* Additional component-specific styles can go here */
-/* Main styles are in /styles/main.css */
+@import "tailwindcss";
+@import "../styles/main.css";
+
+/* Custom theme configuration for Tailwind v4 */
+@theme {
+    /* Brand colors from the existing design system */
+    --color-brand-blue: #4d65ff;
+    --color-brand-cream: #ffffeb;
+    --color-brand-cream-warm: #fff8e7;
+    --color-brand-dark: #1a1a1a;
+    --color-brand-muted: #8d8d83;
+    --color-brand-teal: #034f46;
+
+    /* Custom animations */
+    --animate-confetti-fall: confetti-fall 4s linear infinite;
+    --animate-fade-in-up: fadeInUp 0.6s ease;
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+}
