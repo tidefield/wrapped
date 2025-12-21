@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer: React.FC = () => {
   return (
-    <div className="p-1 text-sm">
+    <div className="p-1 text-sm self-center">
       <span>
         💙 Love this?&nbsp;
         <a

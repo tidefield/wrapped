@@ -215,8 +215,10 @@ function AppContent() {
 
   return (
     <div id="app" className="flex flex-col max-h-screen">
-      <div className="flex h-full">{renderScreen()}</div>
-      <Footer />
+      <div className="flex h-full flex-col">
+        {renderScreen()}
+        <Footer />
+      </div>
     </div>
   );
 }
