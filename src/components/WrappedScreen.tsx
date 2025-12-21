@@ -19,6 +19,7 @@ import { faAngleRight } from "@fortawesome/free-solid-svg-icons/faAngleRight";
 import { faArrowRotateRight } from "@fortawesome/free-solid-svg-icons/faArrowRotateRight";
 import { faAngleLeft } from "@fortawesome/free-solid-svg-icons/faAngleLeft";
 import { faArrowRotateLeft } from "@fortawesome/free-solid-svg-icons/faArrowRotateLeft";
+import ShareButton from "./shared/ShareButton";
 
 interface WrappedScreenProps {}
 
@@ -230,6 +231,7 @@ const WrappedScreen: React.FC<WrappedScreenProps> = ({}) => {
       <div id="capture-area" className="capture-area">
         <ConfettiBackground />
         <div id="story-container">{renderCurrentSlide()}</div>
+        <ShareButton />
       </div>
 
       <div
