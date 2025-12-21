@@ -266,6 +266,10 @@ body {
 }
 
 /* Navigation */
+.navigation {
+    height: 10vh;
+    gap: 2rem;
+}
 .nav-btn {
     width: 50px;
     height: 50px;
